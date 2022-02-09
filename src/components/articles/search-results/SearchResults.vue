@@ -8,7 +8,12 @@
     </p>
     <ul class="mt-3">
       <li v-for="title in filteredTitles" :key="title.Page">
-        {{ title.Name }}
+        <highlight-words
+          :highlightTag="tag"
+          :searchWords="searchWords"
+          :autoEscape="true"
+          :textToHighlight="title.Name"
+        />
       </li>
     </ul>
   </div>
@@ -16,11 +21,16 @@
 
 <script lang="ts">
 import titles from '@/titles.json';
-import { computed, defineComponent } from '@vue/composition-api';
+import { computed, defineComponent, ref } from '@vue/composition-api';
+import HighlightWords from 'vue-highlight-words';
+import StrongSlot from '@/components/strong-slot/StrongSlot.vue';
 
 export default defineComponent({
   props: {
     query: String,
+  },
+  components: {
+    HighlightWords,
   },
   setup(props) {
     const filteredTitles = computed(() => {
@@ -28,7 +38,14 @@ export default defineComponent({
         s.Name.toLowerCase().includes(props.query?.toLowerCase() || '')
       );
     });
-    return { filteredTitles };
+
+    const searchWords = computed(() => {
+      return props.query?.split(' ') || [];
+    });
+
+    const tag = ref(StrongSlot);
+
+    return { tag, searchWords, filteredTitles };
   },
 });
 </script>
