@@ -11,5 +11,9 @@
         "**/*.spec.*"
     ],
     "instrument": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "reporter": [
+        "text",
+        "lcov"
+    ]
 }

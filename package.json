@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "rimraf .nyc_output && npx playwright test && npx nyc report",
+    "test:e2e": "rimraf .nyc_output && rimraf coverage && npx playwright test && npx nyc report",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

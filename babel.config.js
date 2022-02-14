@@ -13,7 +13,6 @@ module.exports = function (api) {
         useInlineSourceMaps: false,
       },
     ]);
-    console.warn('using istanbul with preset extensions');
   }
 
   return {

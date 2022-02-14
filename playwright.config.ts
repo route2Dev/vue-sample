@@ -18,15 +18,15 @@ const config: PlaywrightTestConfig = {
   //   workers: process.env.CI ? 2 : undefined,
 
   webServer: {
-    command: 'npm run serve',
-    port: 8081,
+    command: 'npm run serve -- --port 3001',
+    port: 3001,
     env: {
       coverage: '1',
     },
   },
   use: {
     // Configure browser and context here
-    baseURL: 'http://localhost:8081',
+    baseURL: 'http://localhost:3001',
   },
 };
 export default config;
